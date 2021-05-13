@@ -1,6 +1,6 @@
 package br.edu.infnet.appatpb.model.negocio;
 
-public abstract class Servicos {
+public abstract class Servico {
 
     int id;
     String nomeServico;
@@ -10,7 +10,7 @@ public abstract class Servicos {
 
     }
 
-    public Servicos(String nomeServico, double valorServico) {
+    public Servico(String nomeServico, double valorServico) {
         this.nomeServico = nomeServico;
         this.valorServico = valorServico;
         id++;
