@@ -19,7 +19,7 @@ public class ReservaTeste {
 
         // Servicos do cliente
         List<Servico> listaServicos = new ArrayList<Servico>();
-        Acomodacao acomodacaoClienteUm = new Acomodacao("Acomodacao",202,"Solteiro", 200 , "Coca-cola, água", 2);
+        Acomodacao acomodacaoClienteUm = new Acomodacao("Acomodacao",202, 0 ,"Solteiro", 200 , "Coca-cola, água", 2);
         listaServicos.add(acomodacaoClienteUm);
 
         // Inicia reserva do cliente
@@ -33,7 +33,7 @@ public class ReservaTeste {
             e.printStackTrace();
         }
 
-        Reserva reservaClienteUm = new Reserva(clienteUm, dataOperacao, listaServicos);
+        Reserva reservaClienteUm = new Reserva(clienteUm, listaServicos, dataOperacao, false, 1);
 
         System.out.println(reservaClienteUm);
 

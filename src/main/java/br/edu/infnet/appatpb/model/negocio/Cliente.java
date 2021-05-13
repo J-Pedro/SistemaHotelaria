@@ -1,16 +1,12 @@
 package br.edu.infnet.appatpb.model.negocio;
 
 public class Cliente {
-    int id;
-    String nome;
-    String endereco;
-    int cpf;
-    int idade;
-    int numeroTelefone;
-
-    public static void alterarDados(){
-
-    }
+    private int id;
+    private String nome;
+    private String endereco;
+    private int cpf;
+    private int idade;
+    private int numeroTelefone;
 
     public Cliente() {
         id++;

@@ -7,14 +7,40 @@ public class Alimentacao extends Servico{
     private double valorAlimentacao;
     private boolean bebidaAlcoolica;
     
-    
-    
-	public Alimentacao(String nomeServico, double valorServico, String tipoAlimentacao, double valorAlimento, boolean bebidaAlcoolica) {
-		super(nomeServico, valorServico);
+
+
+	public Alimentacao(String nomeServico, double valorServico, double desconto, String tipoAlimentacao,
+			double valorAlimentacao, boolean bebidaAlcoolica) {
+		super(nomeServico, valorServico, desconto);
 		this.tipoAlimentacao = tipoAlimentacao;
-		this.valorAlimentacao = valorAlimento;
+		this.valorAlimentacao = valorAlimentacao;
 		this.bebidaAlcoolica = bebidaAlcoolica;
 	}
+
+	public String getTipoAlimentacao() {
+		return tipoAlimentacao;
+	}
+
+	public void setTipoAlimentacao(String tipoAlimentacao) {
+		this.tipoAlimentacao = tipoAlimentacao;
+	}
+
+	public double getValorAlimentacao() {
+		return valorAlimentacao;
+	}
+
+	public void setValorAlimentacao(double valorAlimentacao) {
+		this.valorAlimentacao = valorAlimentacao;
+	}
+
+	public boolean isBebidaAlcoolica() {
+		return bebidaAlcoolica;
+	}
+
+	public void setBebidaAlcoolica(boolean bebidaAlcoolica) {
+		this.bebidaAlcoolica = bebidaAlcoolica;
+	}
+	
 	
 	
 }

@@ -2,21 +2,57 @@ package br.edu.infnet.appatpb.model.negocio;
 
 public abstract class Servico {
 
-    int id;
-    String nomeServico;
-    double valorServico;
+   private int id;
+   private String nomeServico;
+   private double valorServico;
+   private double desconto;
+    
 
-    public void cobrarAdicional(){
+ 
+    
+    
+    public Servico(String nomeServico, double valorServico, double desconto) {
+	super();
+	this.nomeServico = nomeServico;
+	this.valorServico = valorServico;
+	this.desconto = desconto;
+	id++;
+	}
 
-    }
+	public String getNomeServico() {
+		return nomeServico;
+	}
 
-    public Servico(String nomeServico, double valorServico) {
-        this.nomeServico = nomeServico;
-        this.valorServico = valorServico;
-        id++;
-    }
+	public void setNomeServico(String nomeServico) {
+		this.nomeServico = nomeServico;
+	}
 
-    @Override
+	public double getValorServico() {
+		return valorServico;
+	}
+
+	public void setValorServico(double valorServico) {
+		this.valorServico = valorServico;
+	}
+
+
+
+
+	public double getDesconto() {
+		return desconto;
+	}
+
+
+
+
+	public void setDesconto(double desconto) {
+		this.desconto = desconto;
+	}
+
+
+
+
+	@Override
     public String toString() {
         return  "nome= " + nomeServico + ", valor= " + valorServico + "\n";
     }
