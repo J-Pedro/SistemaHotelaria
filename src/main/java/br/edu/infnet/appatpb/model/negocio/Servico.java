@@ -7,16 +7,12 @@ public abstract class Servico {
    private double valorServico;
    private double desconto;
     
-
- 
-    
     
     public Servico(String nomeServico, double valorServico, double desconto) {
 	super();
 	this.nomeServico = nomeServico;
 	this.valorServico = valorServico;
 	this.desconto = desconto;
-	id++;
 	}
 
 	public String getNomeServico() {
@@ -36,14 +32,9 @@ public abstract class Servico {
 	}
 
 
-
-
 	public double getDesconto() {
 		return desconto;
 	}
-
-
-
 
 	public void setDesconto(double desconto) {
 		this.desconto = desconto;

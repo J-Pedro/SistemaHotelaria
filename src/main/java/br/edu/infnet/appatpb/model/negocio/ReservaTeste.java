@@ -11,7 +11,7 @@ public class ReservaTeste {
 
 
         // Novo Cliente cadastrado
-        Cliente clienteUm = new Cliente("Pedro",  "Rua São José",  1083123,  20,  9993394);
+        Cliente clienteUm = new Cliente();
         System.out.println(clienteUm + "\n");
 
         // Itens pedido na hora da reserva do hotel
