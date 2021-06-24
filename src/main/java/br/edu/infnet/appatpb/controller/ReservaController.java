@@ -10,57 +10,60 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import br.edu.infnet.appatpb.model.negocio.Cliente;
+import br.edu.infnet.appatpb.model.negocio.Reserva;
 import br.edu.infnet.appatpb.model.negocio.Usuario;
 import br.edu.infnet.appatpb.model.service.ClienteService;
+import br.edu.infnet.appatpb.model.service.ReservaService;
 import br.edu.infnet.appatpb.model.service.UsuarioService;
 
+@SessionAttributes("user")
 @Controller
-public class ClienteController {
+public class ReservaController {
+	
+	@Autowired
+	private ReservaService reservaService;
 	
 	@Autowired
 	private ClienteService clienteService;
 	
 	
-	@GetMapping(value = "/cliente")
+	
+	@GetMapping(value = "/reserva")
 	public String telaCadastro() {
-		return "redirect:/cliente/lista";
+		return "redirect:/reserva/lista";
 	}
 
 	//@RequestMapping(value = "/usuario/incluir", method = RequestMethod.POST)
-	@PostMapping(value = "/cliente/incluir")
-	public String incluir(Cliente cliente, @SessionAttribute("user") Usuario usuario) {
-		cliente.setUsuario(usuario);
-		clienteService.incluir(cliente);
+	@PostMapping(value = "/reserva/incluir")
+	public String incluir(Reserva reserva, @SessionAttribute("user") Usuario usuario) {
+		
+		reserva.setUsuario(usuario);
+		reservaService.incluir(reserva);
+
+		return "redirect:/reserva/lista";
+	}
+	
+	@GetMapping(value = "/reserva/{id}/excluir")
+	public String excluir(@PathVariable Integer id) {
+		reservaService.excluir(id);
+		return "redirect:/reserva/lista";
+	}
+	
+	@GetMapping(value = "/reserva/lista")
+	public String obterLista(Model model, @SessionAttribute("user") Usuario usuario) {
+	
+		
+		model.addAttribute("reservas", reservaService.obterListaUser(usuario));
+		model.addAttribute("clientes", clienteService.obterListaUser(usuario));
+		
+		return "reserva/cadastro";
+	}
 	
 
-		return "redirect:/cliente/lista";
-	}
 	
-	@GetMapping(value = "/cliente/{id}/excluir")
-	public String excluir(Model model, @PathVariable Integer id, @SessionAttribute("user") Usuario usuario) {
-		
-		try {
-			clienteService.excluir(id);
-		} catch (Exception e) {
-			model.addAttribute("mensagem", "Não é possível excluir este cliente");
-			
-			
-			return obterLista(model, usuario);
-		}
-		
-		return "redirect:/cliente/lista";
-	}
-	
-	@GetMapping(value = "/cliente/lista")
-	public String obterLista(Model model, @SessionAttribute("user") Usuario usuario) {
-		List<Cliente> lista = clienteService.obterListaUser(usuario);
-		
-		model.addAttribute("clientes", lista);
-		
-		return "cliente/cadastro";
-	}
 	
 }

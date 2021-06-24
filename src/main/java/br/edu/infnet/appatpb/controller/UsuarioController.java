@@ -23,6 +23,8 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@Autowired
+	private AppController appController;
 	
 	@GetMapping(value = "/usuario")
 	public String telaCadastro() {
@@ -61,8 +63,9 @@ public class UsuarioController {
 			model.addAttribute("user", usuario);
 			return "redirect:/home";
 		}
+		model.addAttribute("mensagem", "Email ou senha inválido");
 		
-		return "redirect:/";
+		return appController.telaLogin(model);
 	}
 	
 	

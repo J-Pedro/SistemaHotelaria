@@ -2,25 +2,38 @@ package br.edu.infnet.appatpb.model.negocio;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tacomodacao")
+@PrimaryKeyJoinColumn(name= "idServico")
 public class Acomodacao extends Servico{
    private String tipoQuarto;
    private double valorQuarto;
-   private String nomeProduto;
-   private double valorProduto;
-
-
-
+   private boolean kitHigiene;
    
+	public Acomodacao(String nomeServico, double valorServico, double desconto) {
+	super(nomeServico, valorServico, desconto);
+}
+	
+	public Acomodacao() {
+	
+}
+	
+	
+
 	public Acomodacao(String nomeServico, double valorServico, double desconto, String tipoQuarto, double valorQuarto,
 		String nomeProduto, double valorProduto) {
 	super(nomeServico, valorServico, desconto);
 	this.tipoQuarto = tipoQuarto;
 	this.valorQuarto = valorQuarto;
-	this.nomeProduto = nomeProduto;
-	this.valorProduto = valorProduto;
 }
+	
+	
 
-
+	
 
 	public String getTipoQuarto() {
 		return tipoQuarto;
@@ -45,33 +58,18 @@ public class Acomodacao extends Servico{
 	}
 
 
+	
 
-	public String getNomeProduto() {
-		return nomeProduto;
+	public boolean isKitHigiene() {
+		return kitHigiene;
 	}
 
-
-
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setKitHigiene(boolean kitHigiene) {
+		this.kitHigiene = kitHigiene;
 	}
-
-
-
-	public double getValorProduto() {
-		return valorProduto;
-	}
-
-
-
-	public void setValorProduto(double valorProduto) {
-		this.valorProduto = valorProduto;
-	}
-
-
 
 	@Override
     public String toString() {
-        return super.toString() + " Quarto= " + tipoQuarto +" | valor: "+ valorQuarto + "\nProdutos: " +  nomeProduto + " | Valor: " + valorProduto;
+        return super.toString() + " Quarto= " + tipoQuarto +" | valor: "+ valorQuarto + "\nProdutos: " ;
     }
 }

@@ -7,11 +7,22 @@
 <meta charset="ISO-8859-1">
 <title>APP-AT-PB</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
 </head>
 <body>
+
+<c:import url="/WEB-INF/jsp/header.jsp"/>
  
-	<div class="container  mt-4">
+	<div class="container mt-4">
 	<h3>Cadastro de cliente</h3>
+		<c:if test="${not empty mensagem}">
+				<div class="container ">
+				  <div class="alert alert-danger">
+				    <strong>Problema!</strong> ${mensagem} 
+				  </div>
+				</div>
+		</c:if>
+	
 	
 		<form action="/cliente/incluir" method="post">
 		
@@ -92,7 +103,7 @@
 		        <td>${c.id}</td>
 		        <td>${c.nome}</td>
 		        <td>${c.email}</td>
-		        <td><a href="/usuario/${c.id}/excluir">excluir</a></td>
+		        <td><a href="/cliente/${c.id}/excluir">excluir</a></td>
 		      </tr>
 		    </c:forEach>
 		    </tbody>

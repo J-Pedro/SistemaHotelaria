@@ -2,12 +2,22 @@ package br.edu.infnet.appatpb.model.negocio;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "talimentacao")
+@PrimaryKeyJoinColumn(name= "idServico")
 public class Alimentacao extends Servico{
     private String tipoAlimentacao;
     private double valorAlimentacao;
     private boolean bebidaAlcoolica;
     
-
+	public Alimentacao() {
+		
+}
 
 	public Alimentacao(String nomeServico, double valorServico, double desconto, String tipoAlimentacao,
 			double valorAlimentacao, boolean bebidaAlcoolica) {

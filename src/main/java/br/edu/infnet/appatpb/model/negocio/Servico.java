@@ -1,7 +1,20 @@
 package br.edu.infnet.appatpb.model.negocio;
 
-public abstract class Servico {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tservico")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Servico {
+
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
    private String nomeServico;
    private double valorServico;
@@ -14,6 +27,27 @@ public abstract class Servico {
 	this.valorServico = valorServico;
 	this.desconto = desconto;
 	}
+    
+    
+
+	public Servico() {
+		super();
+	}
+
+
+	
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 
 	public String getNomeServico() {
 		return nomeServico;

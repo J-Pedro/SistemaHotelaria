@@ -6,34 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import br.edu.infnet.appatpb.model.negocio.Acomodacao;
 import br.edu.infnet.appatpb.model.negocio.Cliente;
 import br.edu.infnet.appatpb.model.negocio.Usuario;
+import br.edu.infnet.appatpb.model.repository.IAcomodacaoRepository;
 import br.edu.infnet.appatpb.model.repository.IClienteRepository;
 import br.edu.infnet.appatpb.model.repository.IUsuarioRepository;
 
 @Service
-public class ClienteService {
+public class AcomodacaoService {
 	
 	@Autowired
-	private IClienteRepository clienteRepository;
+	private IAcomodacaoRepository acomodacaoRepository;
 	
 	
-	public void incluir(Cliente cliente) {
-		clienteRepository.save(cliente);
+	public void incluir(Acomodacao acomodacao) {
+		acomodacaoRepository.save(acomodacao);
 	}
 
-	public List<Cliente> obterLista() {
+	public List<Acomodacao> obterLista() {
 		
-		return (List<Cliente>) clienteRepository.findAll();
+		return (List<Acomodacao>) acomodacaoRepository.findAll();
 	}
 	
-	public List<Cliente> obterListaUser(Usuario usuario) {
-		
-		return (List<Cliente>) clienteRepository.obterListaUser(usuario.getId(), Sort.by(Sort.Direction.ASC, "nome"));
-	}
 	
 	public void excluir (Integer id) {
-		clienteRepository.deleteById(id);
+		acomodacaoRepository.deleteById(id);
 	}
 	
 }

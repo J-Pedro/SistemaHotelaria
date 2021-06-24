@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -20,14 +26,23 @@ public class Reserva {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-	@Transient
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "idCliente")
     private Cliente cliente;
 	@Transient
     private List<Servico> servico;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataReserva;
     private boolean gratuidade;
     private int localHotel;
   
+	
+	public Reserva() {
+		
+	}
     
 	public Reserva(Cliente cliente, List<Servico> servico, Date dataReserva, boolean gratuidade, int localHotel) {
 		super();
@@ -36,7 +51,17 @@ public class Reserva {
 		this.dataReserva = dataReserva;
 		this.gratuidade = gratuidade;
 		this.localHotel = localHotel;
-		id++;
+	}
+
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Cliente getCliente() {
@@ -54,9 +79,6 @@ public class Reserva {
 	public void setServico(List<Servico> servico) {
 		this.servico = servico;
 	}
-
-
-	
 
     public Date getDataReserva() {
 		return dataReserva;
@@ -80,6 +102,14 @@ public class Reserva {
 
 	public void setLocalHotel(int localHotel) {
 		this.localHotel = localHotel;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
