@@ -14,9 +14,9 @@
 <c:import url="/WEB-INF/jsp/header.jsp"/>
  
 	<div class="container mt-4">
-	<h3>Cadastro de acomodacao</h3>
+	<h3>Cadastro de alimentacao</h3>
 	
-		<form action="/acomodacao/incluir" method="post">
+		<form action="/alimentacao/incluir" method="post">
 		
 	<div class="form-row">
 		<div class="form-group col-md-6">
@@ -38,7 +38,7 @@
 		<div class="form-group col-md-6">
 			<label>Tipo de Quarto:</label>
 			<select name="tipoQuarto" class="form-control">
-				<option value="manha" selected>Café da Manhã</option>
+				<option value="cafe" selected>Café da Manhã</option>
 				<option value="almoco">Almoço</option>
 				<option value="janta">Janta</option>
 			</select>
@@ -67,13 +67,13 @@
 	
 		
 		<c:if test="${not empty alimentacoes}">
-		<h3>Acomodacoes cadastradas:</h3>
+		<h3>Alimentacoes cadastradas:</h3>
 		<table class="table table-striped">
 		    <thead>
 		      <tr>
 		        <th>ID</th>
 		        <th>Nome do serviço</th>
-		        <th>Tipo de Quarto</th>
+		        <th>Tipo de Alimentaçãoo</th>
 		        <th>Ações</th>
 		      </tr>
 		    </thead>
@@ -82,7 +82,7 @@
 		      <tr>
 		        <td>${a.id}</td>
 		        <td>${a.nomeServico}</td>
-		        <td>${a.tipoQuarto}</td>
+		        <td>${a.tipoAlimentacao}</td>
 		        <td><a href="/alimentacao/${a.id}/excluir">excluir</a></td>
 		      </tr>
 		    </c:forEach>

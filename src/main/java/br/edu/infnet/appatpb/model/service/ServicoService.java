@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appatpb.model.negocio.Acomodacao;
 import br.edu.infnet.appatpb.model.negocio.Cliente;
+import br.edu.infnet.appatpb.model.negocio.Passeio;
 import br.edu.infnet.appatpb.model.negocio.Servico;
 import br.edu.infnet.appatpb.model.negocio.Usuario;
 import br.edu.infnet.appatpb.model.repository.IAcomodacaoRepository;
@@ -25,6 +26,11 @@ public class ServicoService {
 	public List<Servico> obterLista() {
 		
 		return (List<Servico>) servicoRepository.findAll();
+	}
+	
+	public List<Servico> obterListaServicoBynomeServico() {
+		
+		return (List<Servico>) servicoRepository.obterListaServicoBynomeServico( Sort.by(Sort.Direction.ASC, "nomeServico"));
 	}
 	
 	

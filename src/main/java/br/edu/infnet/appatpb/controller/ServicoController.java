@@ -42,7 +42,7 @@ public class ServicoController {
 	
 	@GetMapping(value = "/servico/lista")
 	public String obterLista(Model model) {
-		List<Servico> lista = servicoService.obterLista();
+		List<Servico> lista = servicoService.obterListaServicoBynomeServico();
 		
 		model.addAttribute("servicos", lista);
 		

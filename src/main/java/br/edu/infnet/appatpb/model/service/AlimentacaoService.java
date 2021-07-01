@@ -31,6 +31,11 @@ public class AlimentacaoService {
 		return (List<Alimentacao>) alimentacaoRepository.findAll();
 	}
 	
+	public List<Alimentacao> obterListaAlimentacaoByRefeicao() {
+		
+		return (List<Alimentacao>) alimentacaoRepository.obterListaAlimentacaoByRefeicao( Sort.by(Sort.Direction.ASC, "tipoAlimentacao"));
+	}
+	
 	
 	public void excluir (Integer id) {
 		alimentacaoRepository.deleteById(id);

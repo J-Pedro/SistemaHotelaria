@@ -49,7 +49,7 @@ public class AcomodacaoController {
 	
 	@GetMapping(value = "/acomodacao/lista")
 	public String obterLista(Model model) {
-		List<Acomodacao> lista = acomodacaoService.obterLista();
+		List<Acomodacao> lista = acomodacaoService.obterListaAcomodacaoByQuarto();
 		
 		model.addAttribute("acomodacoes", lista);
 		

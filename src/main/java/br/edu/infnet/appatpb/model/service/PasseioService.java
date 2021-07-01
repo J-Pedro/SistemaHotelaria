@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appatpb.model.negocio.Acomodacao;
+import br.edu.infnet.appatpb.model.negocio.Alimentacao;
 import br.edu.infnet.appatpb.model.negocio.Cliente;
 import br.edu.infnet.appatpb.model.negocio.Passeio;
 import br.edu.infnet.appatpb.model.negocio.Usuario;
@@ -29,6 +30,11 @@ public class PasseioService {
 	public List<Passeio> obterLista() {
 		
 		return (List<Passeio>) passeioRepository.findAll();
+	}
+	
+	public List<Passeio> obterListaPasseioBynomePasseio() {
+		
+		return (List<Passeio>) passeioRepository.obterListaPasseioBynomePasseio( Sort.by(Sort.Direction.ASC, "nomePasseio"));
 	}
 	
 	

@@ -24,7 +24,7 @@
       <p class="card-text"><a href="acomodacao">Clique aqui para acessar as acomodações</a></p>
     </div>
     <div class="card-footer">
-      <small class="text-muted">Quantidade: ${clienteQtde}</small>
+      <small class="text-muted">Quantidade: ${acomodacaoQtde}</small>
     </div>
   </div>
   

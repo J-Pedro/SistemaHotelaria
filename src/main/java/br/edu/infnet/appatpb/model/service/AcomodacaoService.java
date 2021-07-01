@@ -29,6 +29,11 @@ public class AcomodacaoService {
 		return (List<Acomodacao>) acomodacaoRepository.findAll();
 	}
 	
+	public List<Acomodacao> obterListaAcomodacaoByQuarto() {
+		
+		return (List<Acomodacao>) acomodacaoRepository.obterListaAcomodacaoByQuarto( Sort.by(Sort.Direction.ASC, "tipoQuarto"));
+	}
+	
 	
 	public void excluir (Integer id) {
 		acomodacaoRepository.deleteById(id);

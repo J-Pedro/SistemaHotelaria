@@ -51,7 +51,7 @@ public class AlimentacaoController {
 	
 	@GetMapping(value = "/alimentacao/lista")
 	public String obterLista(Model model) {
-		List<Alimentacao> lista = alimentacaoService.obterLista();
+		List<Alimentacao> lista = alimentacaoService.obterListaAlimentacaoByRefeicao();
 		
 		model.addAttribute("alimentacoes", lista);
 		

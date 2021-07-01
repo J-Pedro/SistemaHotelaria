@@ -51,7 +51,7 @@ public class PasseioController {
 	
 	@GetMapping(value = "/passeio/lista")
 	public String obterLista(Model model) {
-		List<Passeio> lista = passeioService.obterLista();
+		List<Passeio> lista = passeioService.obterListaPasseioBynomePasseio();
 		
 		model.addAttribute("passeios", lista);
 		
